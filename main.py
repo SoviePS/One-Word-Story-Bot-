@@ -1,4 +1,4 @@
-  #grab everything that has been said so far - done
+ #grab everything that has been said so far - done
   #grab the previous sentence -working only with periods
   #grab unread messages and display (or # of inputted previous messages) --> find function for finding number of unread messages in a channel
   #maybe have a callback of the last five sentences?
@@ -90,8 +90,9 @@ async def on_message(message):
       lastsent = "".join(map(str, whole_story[findIndex():]))
       await message.channel.send("One Word Story last sentence:" + lastsent)
     elif message.content.startswith('->catchup'):
-      catch = map(lambda x: x.content, await message.channel.history(limit=int(message.content.split('->catchup', 1)[1])).flatten())
-      await message.channel.send(catch)
+      catch = map(lambda x: x.content, await message.channel.history(limit=int(message.content.split()[1])).flatten())
+      catchwords =  "".join(catch)
+      await message.channel.send(catchwords)
    # 
     #  
     #  await message.channel.history().find(lambda m: m.author.id == users_id)
