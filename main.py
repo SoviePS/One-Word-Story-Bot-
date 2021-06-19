@@ -8,6 +8,9 @@
   #start command for a new story?
   #end command for ending story and option to save?
   #what about storing the messages themselves in the list, and not the content? --> can check message id?
+  #downlower for all commands
+  
+  #slash commands 
 
 
 import discord
@@ -77,9 +80,11 @@ async def on_message(message):
     global whole_story
     if message.author == bot.user:
         return
+        
     if message.content.startswith('->recap'):
       recap = "".join(map(str, sentence))
-      await message.channel.send("One Word Story recap:" + recap)
+      msg_to_pin = await message.channel.send("One Word Story recap:" + recap)
+      await msg_to_pin.pin()
       refresh()
 
     elif message.content.startswith('->allrecap'):
