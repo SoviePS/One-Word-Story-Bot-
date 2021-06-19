@@ -83,8 +83,7 @@ async def on_message(message):
         
     if message.content.startswith('->recap'):
       recap = "".join(map(str, sentence))
-      msg_to_pin = await message.channel.send("One Word Story recap:" + recap)
-      await msg_to_pin.pin()
+      await message.channel.send("One Word Story recap:" + recap)
       refresh()
 
     elif message.content.startswith('->allrecap'):
